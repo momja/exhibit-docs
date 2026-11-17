@@ -5,6 +5,9 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  // Allow the Tailscale hostname so client JS works when the demo
+  // is opened via http://t3code:3000 instead of localhost.
+  allowedDevOrigins: ['t3code'],
   async rewrites() {
     return [
       {
