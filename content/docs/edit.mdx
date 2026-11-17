@@ -12,68 +12,68 @@ Download HTML, Update from source, Edit with agent), internal/api/appheader.go
 web/gallery/versions.js. E2E: edit.versions/concurrency/origins tests.
 No API paths, hosting, or config below — button and panel wording only. */}
 
-Open an artifact's **More actions** menu (the three dots in the floating controls) and choose **Edit**, or open its page and choose the pencil. The edit page opens with a **Save** button and a **View artifact** link in the header.
+Open the tool and choose **Edit** from **More actions**, the three-dot button in the floating toolbar. You can also use the pencil. On the edit page, you'll find **Save** and **View artifact** in the header.
 
 ## What's on the edit page
 
-The page is a stack of sections. Open each one to work in it:
+Open the section you need.
 
-1. **Tags** — adding or removing a tag saves immediately.
-2. **Permissions** — which sites the tool may reach, and which features ask first.
-3. **Saved data** — inspect and change the data the tool has stored for you.
-4. **Stored assets** — files saved with the artifact so it loads even if the original site changes.
-5. **Artifact source** — the tool's own page. This is the open section; editing here is what "Edit" means.
-6. **Card widget** — the read-only preview on the artifact's gallery card. The heading says **default** until you write your own.
-7. **Versions** — every saved change, viewable and restorable.
+1. **Tags**. Add or remove tags. Changes save immediately.
+2. **Permissions.** Choose which sites the tool can reach and which features ask first.
+3. **Saved data.** See and change what the tool has saved for you.
+4. **Stored assets.** See the files saved with the tool so it can load even if the original site changes.
+5. **Artifact source.** Edit the tool's page. This section opens by default.
+6. **Card widget.** Change the read-only preview on the tool's card. The heading shows **default** until you write your own.
+7. **Versions.** View or restore saved changes.
 
 ## Edit and save
 
-1. Change the **Artifact title** field and/or the **Artifact source** text.
-2. Adjust anything else you want in the other sections.
-3. Choose **Save** in the header. The status beside it confirms when it is saved.
-4. If you try to leave with unsaved edits, a **Save changes before leaving?** dialog offers **Keep editing**, **Discard changes**, or **Save and leave**.
+1. Change **Artifact title**, **Artifact source**, or both.
+2. Make any other changes you need in the other sections.
+3. Choose **Save** in the header. The status beside the button confirms when your changes are saved.
+4. If you try to leave with unsaved edits, **Save changes before leaving?** offers **Keep editing**, **Discard changes**, or **Save and leave**.
 
-Only the title and source save through **Save**. Tags save immediately; the saved-data, assets, and widget sections each carry their own buttons (below).
+**Save** applies to the title and source. Tags save immediately. Use the buttons in **Saved data**, **Stored assets**, and **Card widget** to make changes there.
 
 ## Control which sites a tool may reach
 
-Open **Permissions**. It has two halves: sites on the left, features on the right.
+Open **Permissions**. You'll find sites on the left and features on the right.
 
-To allow a site by hand:
+To allow a site:
 
-1. Type it into the **Site to allow** field (for example, `https://example.com`).
+1. Enter its address in **Site to allow**, for example `https://example.com`.
 2. Choose **Add**.
 
-The lists update themselves as you edit:
+The lists update as you make changes.
 
-- **Allowed sites** — sites the tool may contact. Choose **Remove** to take one off.
-- **Found in source, not allowed** — sites your source mentions that are not allowed yet. Choose **Allow** to approve one.
-- **Blocked** — sites you chose to never ask about again. Choose **Ask again** to let the tool ask in the future, or **Allow** to approve one outright.
+- **Allowed sites** lists sites the tool may contact. Choose **Remove** to take a site off the list.
+- **Found in source, not allowed** lists sites mentioned in the source that still need approval. Choose **Allow** to approve a site.
+- **Blocked** lists sites you've chosen to block without future prompts. Choose **Ask again** to let the tool ask next time or **Allow** to approve the site now.
 
-On the right, each feature (**Downloads**, **Clipboard**, **External links**, **Camera**, **Microphone**, **Location**) offers **Ask first** or **Always allow**. Pick per feature; the tool asks before using anything left on **Ask first**.
+For **Downloads**, **Clipboard**, **External links**, **Camera**, **Microphone**, and **Location**, choose **Ask first** or **Always allow**. The tool asks before using any feature set to **Ask first**.
 
 ## Saved data, assets, and the card widget
 
-In **Saved data** you can add keys, change values, then choose **Save data** — or **Discard data edits** to drop what you typed. **Erase current data** wipes the stored data entirely. **Export data (JSON)** downloads a copy you can keep or share; **Import data (JSON)** replaces the stored data with a file you choose.
+In **Saved data**, add keys or change values, then choose **Save data**. Use **Discard data edits** to clear unsaved changes or **Erase current data** to clear all stored data. **Export data (JSON)** downloads a copy you can keep or share. **Import data (JSON)** replaces your stored data with the file you choose.
 
-In **Stored assets**, **Export assets (ZIP)** downloads all saved files with a list of where each came from, and **Import assets (ZIP)** replaces them from a file. Deleting a file is permanent — check its URL in the source first.
+In **Stored assets**, choose **Export assets (ZIP)** to download the files and a list of where they came from. **Import assets (ZIP)** replaces them with files from the ZIP you choose. Deleting a file is permanent, so check its URL in the source first.
 
-In **Card widget**, write widget markup and save it there, or choose **Generate widget** (or **Regenerate** once you have one) to have one drafted for you. Choose **Remove** to go back to the default widget.
+In **Card widget**, write and save your own widget markup, or choose **Generate widget** to have one drafted for you. If you already have a widget, use **Regenerate** to draft another. Choose **Remove** to return to the default widget.
 
 ## Versions and restore
 
-Open **Versions**. The list shows every saved version, newest first, with the current one badged **Current**. Each older row has **View** and **Restore** buttons.
+Open **Versions** to see every saved version, newest first. The version in use is marked **Current**. Older versions have **View** and **Restore** buttons.
 
-1. Choose **View** on a version. A preview appears above the list showing that version running with the data it had — the bar reads **Viewing vN** and warns that nothing you do there is saved.
-2. Look it over. Choose **Back to current** to close the preview, or **Restore vN** to go back to it.
-3. Restoring adds a new version with the old contents — your current version stays in history, so nothing is lost.
+1. Choose **View** to open a preview above the list. The preview runs that version with the data it had at the time. **Viewing vN** appears in the bar, along with a reminder that changes in the preview are temporary.
+2. Choose **Back to current** to close the preview or **Restore vN** to restore the version.
+3. When you restore a version, Exhibit saves its contents as a new version. The version you were using stays in your history.
 
 ## Duplicate, delete, and take a copy
 
-- **Duplicate** — from the gallery card menu, **Duplicate** opens the **Duplicate artifact** dialog. Give it a **Title**, tick **Copy sharing settings** to give the same people access (a public link becomes a fresh link for the copy), tick **Copy saved data** to carry results over, then choose **Duplicate artifact**.
-- **Delete** — at the bottom of the edit page, **Delete** asks you to confirm, then removes the artifact with its versions, saved data, and share links. This cannot be undone.
-- **Download HTML** — in the artifact's **More actions** menu, downloads the artifact and its assets in one file, without saved data or account access.
-- **Update from source** — in the same menu for artifacts saved from a URL, re-saves the page from its original address.
+- **Duplicate.** Choose **Duplicate** from the card's action menu to open **Duplicate artifact**. Give the copy a **Title**. Select **Copy sharing settings** to give the same people access and generate a fresh public link if the original had one. Select **Copy saved data** to carry over your results. Choose **Duplicate artifact** to finish.
+- **Delete.** Choose **Delete** at the bottom of the edit page. After you confirm, Exhibit permanently removes the tool, its versions, its saved data, and its share links.
+- **Download HTML.** In **More actions**, use **Download HTML** to download the tool and its assets in one file. Saved data and account access stay in Exhibit.
+- **Update from source.** If you saved the tool from a URL, choose **Update from source** in **More actions** to save it again from its original address.
 
 ## Next steps
 

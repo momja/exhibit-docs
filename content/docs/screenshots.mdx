@@ -3,35 +3,28 @@ title: Screenshots
 description: "How docs images are captured, named, and embedded."
 ---
 
-Screenshots live in `public/screenshots/` and are referenced root-absolute
-from MDX:
+Save screenshots in `public/screenshots/` and reference them in MDX with paths that start at the site root.
 
 ```mdx
 ![Gallery home](/screenshots/gallery-home.png)
 ```
 
-Placeholders (like `/screenshots/gallery-empty.svg`) ship so pages render
-before real captures exist. Replace them with curated captures — never commit
-throwaway review images.
+Pages can use placeholders such as `/screenshots/gallery-empty.svg` until you have screenshots. Replace placeholders with the images you want to publish. Keep temporary review images out of the repository.
 
 ## Capture framework
 
-`scripts/screenshots/` is the whole pipeline:
+You'll find the capture tools in `scripts/screenshots/`.
 
-- `screenshots.config.json` — routes to capture (Exhibit + docs), viewport,
-  output dir, plus optional `auth.storageState` (global) and per-shot
-  `storageState` for signed-in pages.
-- `capture.mjs` — Playwright Chromium script. Reads the config, visits each
-  route, writes PNGs to `public/screenshots/`. Fail-loud: exits 1 if any
-  shot fails.
-- `README.md` — full runbook (in that folder).
+- In `screenshots.config.json`, set which Exhibit and docs pages to capture, the viewport, and the output directory. For signed-in pages, you can set `auth.storageState` for the whole run or `storageState` for an individual shot.
+- `capture.mjs` reads the config, visits each route in Playwright Chromium, and writes PNGs to `public/screenshots/`. It exits with status 1 if any shot fails.
+- `README.md` in the same folder has the full runbook.
 
 ```bash
-# one-time setup (browsers are environment-specific, never vendored via npm)
+# Set up once per environment. Install browsers separately from npm packages.
 npm install
 npx playwright install chromium
 
-# run both servers first:
+# Start both servers before capturing.
 #   Exhibit: ./bin/server   (in momja/Exhibit, :8080)
 #   Docs:    npm run dev    (here, :3000)
 
@@ -40,12 +33,9 @@ EXHIBIT_URL=http://localhost:8080 DOCS_URL=http://localhost:3000 npm run screens
 
 ## Signed-in captures
 
-Docs pages are public and need no auth. Exhibit pages that need sign-in
-capture a login redirect when run signed out — the runner fails those
-shots (recording expected vs actual URL) instead of saving the login page.
+You can capture the public docs pages while signed out. If an Exhibit page redirects to sign-in, the runner marks that shot as failed and records the expected and actual URLs. It skips saving the login page.
 
-Create a storage-state file once with a headed login, then reuse it per
-shot or globally (see `scripts/screenshots/README.md` for the runbook):
+Sign in through a visible browser window once to create a storage-state file. You can reuse it for one shot or the whole run. See `scripts/screenshots/README.md` for the full steps.
 
 ```bash
 npx playwright codegen http://localhost:8080 --save-storage=scripts/screenshots/auth-exhibit.json
@@ -55,27 +45,30 @@ npx playwright codegen http://localhost:8080 --save-storage=scripts/screenshots/
 { "name": "gallery-mine", "path": "/", "waitFor": "main", "storageState": "scripts/screenshots/auth-exhibit.json" }
 ```
 
-Never commit the storage-state file — it holds session cookies.
+Keep the storage-state file out of the repository. It contains session cookies.
 
 ## Fail-loud behavior
 
-The runner exits 0 only when every shot captures. A shot fails when
-navigation fails, HTTP status is not 2xx, the final URL is a login/auth
-redirect, the `waitFor` selector never appears, or the screenshot cannot
-be written. The run ends with a per-shot `PASS`/`FAIL` summary and exit 1
-on any failure — no silent skips.
+The runner reports `PASS` or `FAIL` for each shot. It exits with status 0 if every shot succeeds and status 1 if any shot fails.
+
+A shot fails if any of these happen:
+
+- The browser can't navigate to the page.
+- The HTTP status falls outside the 2xx range.
+- The page redirects to a login or auth URL.
+- The `waitFor` selector never appears.
+- The runner can't write the screenshot.
 
 ## Verification status
 
-Not yet verified end-to-end against a seeded Exhibit library. To verify:
-seed a local Exhibit library, start both servers, run `npm run
-screenshots`, and expect one PNG per config entry plus `0 failed`. With
-the servers stopped, the same command must print `FAIL` lines and exit 1.
+End-to-end verification against a seeded Exhibit library is still pending.
+
+1. Seed a local Exhibit library, start both servers, and run `npm run screenshots`. Expect one PNG per config entry and a summary of `0 failed`.
+2. Stop both servers and run the same command again. Expect `FAIL` lines and exit status 1.
 
 ## Conventions
 
-- Kebab-case names: `gallery-home.png`, `new-artifact.png`.
-- Keep each image under ~500KB; prefer PNG for UI.
-- Only list curated shots in the config — the script captures exactly those.
-- After capturing, reference the PNG from the relevant MDX page and delete or
-  keep the SVG placeholder only if the page needs a fallback.
+- Use kebab-case filenames such as `gallery-home.png` and `new-artifact.png`.
+- Keep each image under about 500 KB. Prefer PNG for interface screenshots.
+- List only the shots you want to keep. The runner captures exactly what's in the config.
+- Reference each PNG from the relevant MDX page. Keep the SVG placeholder only if the page needs a fallback.

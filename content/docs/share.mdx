@@ -9,56 +9,59 @@ web/gallery/detail.js (recipient banners), internal/api/gallery.go (sharePanelVi
 field labels). E2E: share_modal_transactions_browser_test.go, sharepanel_test.go.
 No API paths, hosting, or config below — dialog wording only. */}
 
-Sharing lives on the artifact's page. Open the artifact, choose the **Share** button in the floating controls, and the **Share artifact** dialog opens. Choose **Done** to close it when you finish.
+Open the tool you want to share and choose **Share** in the floating toolbar. When you're finished in **Share artifact**, choose **Done**.
 
 ## Share with a link
 
-1. In the **Share artifact** dialog, find the **Public link** section.
+1. In **Share artifact**, find **Public link**.
 2. Turn on **Anyone with the link can open this artifact**.
-3. A **Public link** field appears with the URL. Use its copy button to copy it, then send it to whoever you like.
-4. Anyone with the link can open the artifact and see your saved data. They cannot change it — in either data mode, visitors can view your saved data but cannot change it.
+3. When the **Public link** field appears, use its copy button to copy the URL. Send it to the people you want to share with.
+4. Anyone with the link can open the tool and view your saved data. Link visitors have read-only access to that data in both data modes.
 
-To replace a link that got out:
+To replace a link you've already shared:
 
-1. Open the **Share artifact** dialog again.
-2. Choose **Replace link**. The current link stops working immediately, and a new one appears. Copy the new one.
+1. Open **Share artifact** again.
+2. Choose **Replace link**. The old link stops working immediately. Copy the new one.
 
-To stop link sharing, turn **Anyone with the link can open this artifact** off. The URL dies at once.
+To stop link sharing, turn off **Anyone with the link can open this artifact**. The link stops working immediately.
 
-The **Embed widget** section (under the public link) holds a read-only card widget showing the artifact's saved data — a snippet you can paste elsewhere. Replacing the link replaces this snippet too.
+Below the public link, **Embed widget** gives you a snippet you can paste elsewhere to show a read-only card widget with your saved data. Replacing the link replaces the snippet too.
 
 ## Share with named people
 
-1. In the **Share artifact** dialog, find the **People** section.
-2. Under **Add people**, type existing Exhibit usernames or emails, separated by commas, into the **Username or email** field.
+1. In **Share artifact**, find **People**.
+2. Under **Add people**, enter existing Exhibit usernames or email addresses in **Username or email**. Separate multiple entries with commas.
 3. Choose **Give access**.
 
-Each person you add appears in the **People with access** list. What they get: they open the artifact as themselves and see your sharing setup; they never get access to your connected accounts (sharing can expose saved results from connected accounts, but never grants account access).
+Each person you add appears in **People with access**. They open the tool using their own account and see the sharing setup you chose. Sharing can show saved results from your connected accounts. Access to those accounts stays with you.
 
-To remove someone, choose **Revoke** beside their name. If nobody is shared with yet, the list reads **Not shared with anyone yet.**
+To remove someone, choose **Revoke** beside their name. If the list is empty, it reads **Not shared with anyone yet.**
 
 ## Your data vs their data
 
-The **Saved data for people you add** section decides whose saved data named people use:
+Use **Saved data for people you add** to choose whose saved data named people use.
 
-- **Separate data** — Each person uses their own saved data. Changes affect only them.
-- **Shared data** — People you add can view and update your saved data. Changes affect everyone with access.
+- **Separate data.** Each person uses their own saved data. Their changes affect only them.
+- **Shared data.** People you add can view and update your saved data. Changes affect everyone with access.
 
-Pick the one that matches what you want, then review your saved data before sharing. Opening **What happens when I switch?** explains the switch both ways: going separate returns everyone to their own previously saved data (or empty, if they have none), while going shared puts people you add onto your saved data and keeps their separate data aside for later.
+Choose a mode and review your saved data before sharing. Select **What happens when I switch?** to see what changes.
 
-Link visitors always see your saved data and cannot change it, whichever option you pick.
+- Switching to **Separate data** returns each person to their own saved data. If they have none, they start with empty data.
+- Switching to **Shared data** gives people you add your saved data and keeps their separate data for later.
+
+With either setting, link visitors can view your saved data in read-only mode.
 
 ## What recipients see
 
-A person who opens your share sees the artifact running with the data your settings allow. They cannot edit it, change its sites or permissions, or re-share it — those controls stay yours. If the tool needs a site you never allowed, they see a note naming it and asking them to have you review the sites list.
+When someone opens your tool, it runs with the data your sharing settings allow. You keep control over editing, sites, permissions, and sharing. If the tool needs a site you haven't allowed, recipients see a message that names the site and asks them to have you review the sites list.
 
 ## Stop sharing
 
-1. Open the **Share artifact** dialog.
-2. Turn the public-link toggle off to kill the link.
-3. Choose **Revoke** beside each person to remove them.
+1. Open **Share artifact**.
+2. Turn off the public link.
+3. Choose **Revoke** beside each person to remove their access.
 
-Once both are done, nobody outside your account can reach the artifact.
+Once the link is off and you've removed everyone, access is limited to your account.
 
 ## Next steps
 

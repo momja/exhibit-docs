@@ -12,69 +12,72 @@ web/gallery/agent.js (previewArtifactId, openHistory/closeHistory, showPane,
 View updated preview nudge, resume/rollback), web/gallery/agent-questions.js.
 No API paths, hosting, or config below — chat wording only. */}
 
-The agent builds and changes tools for you through chat. You describe what you want; it writes the page and shows it to you.
+Describe what you want in chat. The agent builds or edits the tool for you and shows you the result.
 
 ## Two ways to start
 
-**From the New page** (for something that does not exist yet):
+**From the New page**
 
-1. Go to the New page and pick the **Build with agent** route (already selected).
-2. Give it a **Title** if you like, then answer **What should it do?** — what belongs on screen and what it should remember between visits.
-3. Choose **Start building**. The agent page opens and your answers become its first message.
+1. Open the New page. **Build with agent** is already selected.
+2. Give the tool a **Title** if you like. In **What should it do?**, describe what you want on screen and what the tool should remember between visits.
+3. Choose **Start building**. Your answers become the first message on the agent page.
 
-**From an existing tool** (to change one):
+**From an existing tool**
 
-1. Open the artifact and choose **More actions**, then **Edit with agent**.
-2. The agent page opens already working on that exhibit — it reads the tool before changing anything.
+1. Open the tool and choose **More actions**, then **Edit with agent**.
+2. On the agent page, the agent reads the tool before it makes changes.
 
-The agent page header reads **Agent** with a **Back** link; when the agent needs your own key, an **API key** button appears beside it.
+The header says **Agent** and has a **Back** link. If the agent needs your own key, you'll also see **API key**.
 
 ## Picking which exhibit it works on
 
-The agent always works on one exhibit at a time:
+The agent works on one tool at a time.
 
-- Arriving from **Start building** or **Edit with agent**, it is already set — the chat and preview belong to that exhibit.
-- The **Preview** pane names the exhibit in its bar. **View artifact** opens the finished tool; **Open** (or **Preview only** for connected tools) opens it in a new tab.
-- While it works, everything it does lands on that exhibit — check the preview title before sending a message that says "it".
+- When you choose **Start building** or **Edit with agent**, the chat and preview are already tied to that tool.
+- The **Preview** bar shows the tool's name. Choose **View artifact** to open the finished tool, or **Open** (**Preview only** for connected tools) to open it in a new tab.
+- Check the preview title before sending another request. The agent's changes apply to the tool named there.
 
 ## What it can do for you
 
-Ask in plain words. It can:
+You can ask the agent to:
 
-1. Create a new tool from your description.
-2. Change or fix a tool you already have.
-3. Draft or update the tool's card widget.
-4. Read a tool's source and explain what it does.
+- Build a tool from your description.
+- Change or fix a tool you've already saved.
+- Draft or update the card widget.
+- Read the tool's source and explain what it does.
 
-Type into the **Describe what you want to build or change…** box and send with the paper-plane button (Enter sends; Shift+Enter starts a new line). While it works, the button becomes **Stop agent** — choose it to interrupt.
+Type your request in **Describe what you want to build or change…**. Use the paper-plane button or press Enter to send it. Press Shift+Enter to start a new line. While the agent works, choose **Stop agent** to interrupt it.
 
 ## Following its progress
 
-Watch two places at once:
+- **Chat** on the left shows the agent's updates. Chips such as **Creating**, **Writing**, **Editing**, and **Reading** turn into check marks as each step finishes.
+- **Preview** on the right shows the live tool. On narrow screens, use the **Chat** and **Preview** tabs to switch between them. If the tool changes while you're reading the chat, **View updated preview** appears above it.
 
-1. **Chat** (left) — the agent narrates as it goes, with small chips naming each step (**Creating**, **Writing**, **Editing**, **Reading**) that turn into a check when done.
-2. **Preview** (right) — the live tool. Switch with the **Chat** and **Preview** tabs on narrow screens; a **View updated preview** nudge appears over the chat when the preview changes while you read.
-
-You can also choose **Select an element** above the preview, then click part of the tool, to point the agent at exactly that piece.
+To point the agent to part of the tool, choose **Select an element** above the preview and click the part you want it to look at.
 
 ## Looking back at past conversations
 
-1. Choose **History** above the chat. The chat gives way to **Previous conversations**, newest first, each saying which version it last worked against and when.
-2. Pick one to read it. The full conversation appears read-only.
-3. To pick it back up, choose **Continue this conversation**.
+1. Choose **History** above the chat. **Previous conversations** shows the newest first, with the last version each conversation worked on and when.
+2. Choose a conversation to read it in full. It opens in read-only mode.
+3. Choose **Continue this conversation** to pick up where you left off.
 
-If the tool has moved on since that conversation, you get a choice: **Restore vN and continue** puts the tool's code and saved data back as that version left them (recorded as a new version, so nothing is lost — preview it first with **Preview vN**), while **Continue with current version** leaves the tool alone and lets the agent re-read it. Some very old conversations can be read but not continued, and the card says so.
+If the tool has changed since that conversation, choose how to continue.
+
+- **Restore vN and continue** restores the source and saved data from that version. Exhibit records the restore as a new version and keeps your saved versions in history. Choose **Preview vN** to look first.
+- **Continue with current version** keeps the tool as it is and has the agent read it again.
+
+For some older conversations, the card tells you they're available to read only.
 
 ## When it asks you a question
 
-Sometimes the agent needs a decision before continuing. It shows one or more questions inline, each with:
+If the agent needs a decision from you, it asks in the chat. Use the controls shown with the question.
 
-1. Option buttons — pick the one you want (some questions allow several).
-2. **Something else** — opens a **Your answer…** box for answering in your own words.
-3. **Done** — confirms a question that takes several answers.
-4. **Skip** — moves on without answering.
+- Choose an option. Some questions accept more than one.
+- Choose **Something else** to write your own answer in **Your answer…**.
+- Choose **Done** to confirm your choices when a question accepts several answers.
+- Choose **Skip** to move on without answering.
 
-If the questions fail to load, a **Try again** button appears — choose it to reload them.
+If the questions can't load, choose **Try again** to reload them.
 
 ## Next steps
 
