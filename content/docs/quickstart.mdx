@@ -5,24 +5,9 @@ description: "Run Exhibit locally and save your first tool"
 
 Get Exhibit running on your machine and save your first artifact in a few minutes.
 
-## Prerequisites
-
-- Go 1.25+
-- Node 22+
-- `make`
-- Pi Bolt (optional) — only needed for agent features
-
-Check your toolchain:
-
-```sh
-go version
-node --version
-make --version
-```
-
 ## Fastest path: Docker Compose
 
-The quickest way to run Exhibit is with Docker Compose.
+The quickest way to run Exhibit is with Docker Compose — no toolchain needed.
 See [deployment.md](https://github.com/momja/Exhibit/blob/main/docs/deployment.md)
 in the momja/Exhibit repo for the Compose file and environment variables, then:
 
@@ -34,7 +19,20 @@ Open [http://localhost:8080](http://localhost:8080) in your browser.
 
 ## From source
 
-If you prefer to build it yourself:
+If you prefer to build it yourself, you need:
+
+- Go 1.25+
+- Node 22+
+- `make`
+- Pi Bolt (optional) — only needed for agent features
+
+Check your toolchain, then build:
+
+```sh
+go version
+node --version
+make --version
+```
 
 ```sh
 git clone https://github.com/momja/Exhibit.git
@@ -45,16 +43,24 @@ make build
 
 Then open [http://localhost:8080](http://localhost:8080).
 
+## First sign-in
+
+A fresh default instance with no authentication configured creates a local
+`admin` account with password `changeme`. Gallery pages redirect to
+`/auth/login` until you sign in — use those credentials, then change the
+password immediately (the server logs a warning on every startup until you do).
+
 ## Save your first artifact
 
 Go to `/new` and pick one ingest path:
 
+- **Build with agent** — describe the tool you want and let the agent draft it.
 - **Paste HTML** — drop markup straight into the editor.
-- **Upload** — upload an `.html` file or a ZIP bundle.
-- **Paste a URL** — paste a link and tick the snapshot option to vendor a copy.
+- **From URL** — paste a link; keep snapshotting on to save the page's images, styles, and scripts with it. Files that fail to vendor stay as live references needing network access.
 
-Approve any network origins the page requests when prompted, then open the
-saved card from the gallery to use your tool.
+The artifact saves first; if the page requests network origins, approve them
+when prompted after the save, then open the saved card from the gallery to use
+your tool.
 
 ## Next steps
 

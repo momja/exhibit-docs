@@ -7,14 +7,14 @@ Exhibit is a self-hostable personal gallery for single-file HTML+JS micro-tools,
 
 ## Key concepts
 
-- **Artifact** — a single self-contained HTML+JS micro-tool, saved from pasted markup, an uploaded `.html` file or ZIP, or a snapshotted URL.
+- **Artifact** — a single self-contained HTML+JS micro-tool, built with the agent, pasted as markup, or saved from a snapshotted URL.
 - **Gallery** — the home surface (`/`) listing your artifacts as cards, with Starred, Search, Shared, and Activity views for organizing and rediscovering them.
 - **Exhibit tile** — one gallery card: the artifact's title, preview, tags, and actions (open, star, share, edit, version history).
-- **Widget** — per-artifact settings edited alongside page source, such as display options for how the tool presents in the gallery.
-- **Storage shim** — a small preamble injected before artifact scripts that captures `localStorage` writes and syncs marked state through the server, so reopening a card on another device restores it.
+- **Widget** — an optional, read-only HTML preview of an artifact's saved state, rendered inside its gallery card. It reads the same keys the tool writes but cannot write back.
+- **Storage shim** — a small preamble injected before artifact scripts that captures `localStorage` writes and syncs them through the server, so reopening a card on another device restores it.
 - **Network allowlist / CSP** — each artifact declares the external domains it may call; anything unapproved stays blocked by a per-artifact Content Security Policy.
-- **Version history** — every save keeps a restorable snapshot, viewable and restorable from `/versions/:id`.
-- **Sharing links vs grants** — anonymous links (`/s/:id`) let anyone with the URL view, while named grants share with specific users; either can be revoked so the URL stops resolving.
+- **Version history** — changes to artifact and widget source are snapshotted as versions, viewable and restorable from the `#versions-panel` section of `/artifacts/:id/edit`.
+- **Sharing links vs grants** — anonymous public links (`/s/:shareID`) let anyone with the URL view the owner's saved state with no write-through, while named grants share with specific signed-in users; either can be revoked so the URL stops resolving.
 - **Render surface** — the isolated origin and sandboxed iframe an artifact executes in, separate from the gallery app origin.
 - **Agent** — an optional Pi sidecar that can create and edit artifacts through the same HTTP API as the UI.
 

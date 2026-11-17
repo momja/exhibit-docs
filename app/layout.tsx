@@ -1,6 +1,11 @@
+import type { Metadata } from 'next';
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
 import { Inter } from 'next/font/google';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://github.com/momja/exhibit-docs'),
+};
 
 const inter = Inter({
   subsets: ['latin'],

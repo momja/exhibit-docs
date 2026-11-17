@@ -3,6 +3,8 @@
   "docsUrl": "http://localhost:3000",
   "outDir": "public/screenshots",
   "viewport": { "width": 1440, "height": 900 },
+  "auth": { "storageState": null },
+  "_comment": "Auth: each shot accepts an optional storageState path to a Playwright storage-state JSON file, e.g. { name: gallery-mine, path: /, waitFor: main, storageState: scripts/screenshots/auth-exhibit.json }. Set auth.storageState to sign in every shot that omits its own. Null (default) captures signed out; docs pages are public and need no auth. See scripts/screenshots/README.md for the one-time headed-login runbook. JSON has no comments, so this _comment field carries the example.",
   "shots": [
     { "name": "gallery-home", "path": "/", "waitFor": "main" },
     { "name": "gallery-search", "path": "/search", "waitFor": "main" },

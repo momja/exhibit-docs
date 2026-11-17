@@ -19,14 +19,16 @@ throwaway review images.
 `scripts/screenshots/` is the whole pipeline:
 
 - `screenshots.config.json` — routes to capture (Exhibit + docs), viewport,
-  output dir.
+  output dir, plus optional `auth.storageState` (global) and per-shot
+  `storageState` for signed-in pages.
 - `capture.mjs` — Playwright Chromium script. Reads the config, visits each
-  route, writes PNGs to `public/screenshots/`.
+  route, writes PNGs to `public/screenshots/`. Fail-loud: exits 1 if any
+  shot fails.
 - `README.md` — full runbook (in that folder).
 
 ```bash
-# one-time
-npm i -D playwright
+# one-time setup (browsers are environment-specific, never vendored via npm)
+npm install
 npx playwright install chromium
 
 # run both servers first:
@@ -35,6 +37,40 @@ npx playwright install chromium
 
 EXHIBIT_URL=http://localhost:8080 DOCS_URL=http://localhost:3000 npm run screenshots
 ```
+
+## Signed-in captures
+
+Docs pages are public and need no auth. Exhibit pages that need sign-in
+capture a login redirect when run signed out — the runner fails those
+shots (recording expected vs actual URL) instead of saving the login page.
+
+Create a storage-state file once with a headed login, then reuse it per
+shot or globally (see `scripts/screenshots/README.md` for the runbook):
+
+```bash
+npx playwright codegen http://localhost:8080 --save-storage=scripts/screenshots/auth-exhibit.json
+```
+
+```json
+{ "name": "gallery-mine", "path": "/", "waitFor": "main", "storageState": "scripts/screenshots/auth-exhibit.json" }
+```
+
+Never commit the storage-state file — it holds session cookies.
+
+## Fail-loud behavior
+
+The runner exits 0 only when every shot captures. A shot fails when
+navigation fails, HTTP status is not 2xx, the final URL is a login/auth
+redirect, the `waitFor` selector never appears, or the screenshot cannot
+be written. The run ends with a per-shot `PASS`/`FAIL` summary and exit 1
+on any failure — no silent skips.
+
+## Verification status
+
+Not yet verified end-to-end against a seeded Exhibit library. To verify:
+seed a local Exhibit library, start both servers, run `npm run
+screenshots`, and expect one PNG per config entry plus `0 failed`. With
+the servers stopped, the same command must print `FAIL` lines and exit 1.
 
 ## Conventions
 
