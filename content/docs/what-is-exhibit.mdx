@@ -1,0 +1,36 @@
+---
+title: What is Exhibit
+description: "Exhibit in one page: artifacts, gallery, widgets"
+---
+
+Exhibit is a self-hostable personal gallery for single-file HTML+JS micro-tools, where each tool runs in a sandboxed iframe and its `localStorage` syncs through the server so state follows you across devices.
+
+## Key concepts
+
+- **Artifact** — a single self-contained HTML+JS micro-tool, saved from pasted markup, an uploaded `.html` file or ZIP, or a snapshotted URL.
+- **Gallery** — the home surface (`/`) listing your artifacts as cards, with Starred, Search, Shared, and Activity views for organizing and rediscovering them.
+- **Exhibit tile** — one gallery card: the artifact's title, preview, tags, and actions (open, star, share, edit, version history).
+- **Widget** — per-artifact settings edited alongside page source, such as display options for how the tool presents in the gallery.
+- **Storage shim** — a small preamble injected before artifact scripts that captures `localStorage` writes and syncs marked state through the server, so reopening a card on another device restores it.
+- **Network allowlist / CSP** — each artifact declares the external domains it may call; anything unapproved stays blocked by a per-artifact Content Security Policy.
+- **Version history** — every save keeps a restorable snapshot, viewable and restorable from `/versions/:id`.
+- **Sharing links vs grants** — anonymous links (`/s/:id`) let anyone with the URL view, while named grants share with specific users; either can be revoked so the URL stops resolving.
+- **Render surface** — the isolated origin and sandboxed iframe an artifact executes in, separate from the gallery app origin.
+- **Agent** — an optional Pi sidecar that can create and edit artifacts through the same HTTP API as the UI.
+
+## Tech stack
+
+- **Go 1.25** server with `html/template` server-rendered pages.
+- **SQLite + FTS5** for metadata and full-text search, migrated with `goose`.
+- **FS / S3 blobs** for artifact bodies and snapshots.
+- **Sandboxed iframe + per-artifact CSP** on an isolated render origin.
+- **htmx partials + Stimulus controllers + Phosphor icons** for gallery UI.
+- **Pi sidecar** for optional agent-driven authoring.
+
+## Next steps
+
+<Cards>
+  <Card title="Quickstart" href="/docs/quickstart" />
+  <Card title="How Exhibit works" href="/docs/how-it-works" />
+  <Card title="Using the gallery" href="/docs/using-the-gallery" />
+</Cards>

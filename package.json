@@ -5,6 +5,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "screenshots": "node scripts/screenshots/capture.mjs",
     "start": "next start",
     "types:check": "next typegen && tsc --noEmit"
   },

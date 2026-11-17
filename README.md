@@ -1,45 +1,41 @@
-# exhibit-docs
+# Exhibit Docs
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+Fumadocs site covering how [Exhibit](https://github.com/momja/Exhibit) works.
+Seeded small: core mental model, quickstart, gallery workflows, and a
+screenshot framework.
 
-Run development server:
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-pnpm dev
-# or
-yarn dev
+# open http://localhost:3000/docs
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+## Content
 
-## Explore
+- `content/docs/index.mdx` — landing
+- `content/docs/what-is-exhibit.mdx` — concepts + stack
+- `content/docs/quickstart.mdx` — run it, save first tool
+- `content/docs/how-it-works.mdx` — two origins, one write path
+- `content/docs/using-the-gallery.mdx` — day-to-day workflows
+- `content/docs/screenshots.mdx` — image conventions + pipeline
+- `content/docs/meta.json` — sidebar order
 
-In the project, you can see:
+Images live in `public/screenshots/` and are referenced root-absolute:
+`![caption](/screenshots/gallery-home.png)`.
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `lib/layout.shared.tsx`: Shared options for layouts, optional but preferred to keep.
+## Screenshots
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
+See `scripts/screenshots/README.md`. TL;DR:
 
-### Fumadocs MDX
+```bash
+npm i -D playwright
+npx playwright install chromium
+EXHIBIT_URL=http://localhost:8080 DOCS_URL=http://localhost:3000 npm run screenshots
+```
 
-Collections are defined with the [Macro API](https://fumadocs.dev/docs/mdx/macro) in `lib/source.ts`.
+## Source of truth
 
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
-
-## Learn More
-
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.dev) - learn about Fumadocs
+Long-form spec stays in `momja/Exhibit` (`README.md`, `docs/`). These pages are
+the friendly on-ramp, not a fork.

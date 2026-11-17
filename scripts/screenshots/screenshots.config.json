@@ -1,0 +1,12 @@
+{
+  "exhibitUrl": "http://localhost:8080",
+  "docsUrl": "http://localhost:3000",
+  "outDir": "public/screenshots",
+  "viewport": { "width": 1440, "height": 900 },
+  "shots": [
+    { "name": "gallery-home", "path": "/", "waitFor": "main" },
+    { "name": "gallery-search", "path": "/search", "waitFor": "main" },
+    { "name": "new-artifact", "path": "/new", "waitFor": "main" },
+    { "name": "docs-home", "path": "/", "base": "docs", "waitFor": "main" }
+  ]
+}

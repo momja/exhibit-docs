@@ -1,0 +1,66 @@
+---
+title: Using the gallery
+description: "Spaces, search, state sync, sharing, and versions"
+---
+
+Five workflows for day-to-day use of the Exhibit gallery.
+
+## Create and ingest
+
+Start at `/new` with one of three ingest paths:
+
+- **Paste HTML** for a quick snippet or prototype.
+- **Upload** an `.html` file or ZIP bundle for a full page.
+- **Paste a URL** and enable the snapshot option to vendor a frozen copy of a remote page.
+
+Snapshotted pages vendor their assets locally so they keep working offline.
+Approve each network origin (the external domains a page may call) before
+saving — unapproved origins stay blocked. Your artifact lands as a gallery card.
+
+Key routes: `/new`, `/`
+
+## Organize and rediscover
+
+- **Starred** (`/starred`) — pin favorites for one-click access.
+- **Search** (`/search`) — full-text search over page content, plus filters for tags and collections.
+- **Shared** (`/shared`) — everything shared with you or by you.
+- **Activity** (`/activity`) — recent saves, edits, shares, and restores.
+
+Listing pages show 24 cards per page with htmx-powered paging (no full reload).
+
+Key routes: `/starred`, `/search`, `/shared`, `/activity`
+
+## Use across devices
+
+Open a card on any device and pick up where you left off:
+
+- State marked for persistence syncs through the storage shim and `PUT` state endpoint.
+- `localStorage` writes are captured and restored per artifact and user.
+- `sessionStorage` stays ephemeral — it never leaves the tab.
+
+Sign in on the second device with the same account and open the same card; synced state loads automatically.
+
+Key routes: `/s/:id`, `/api/state/:id`
+
+## Share safely
+
+Two link styles:
+
+- **Anonymous links** (`/s/:id`) — anyone with the link can view; no account required.
+- **Named grants** — share with specific users from the share dialog.
+
+Each viewer opens the artifact in either **own** state mode (their changes stay private) or **shared** state mode (everyone sees the same state). Revoke a link or grant at any time from the share dialog; revoked URLs stop resolving immediately.
+
+Key routes: `/s/:id`, `/shared`
+
+## Maintain over time
+
+Keep artifacts healthy as pages and widgets evolve:
+
+- **Edit** page source and widget settings from the artifact's edit view.
+- **Origins** — review and prune approved network origins.
+- **State inspector** — inspect persisted state and clear bad values.
+- **Versions** — open history to View any snapshot or Restore it as current.
+- **Duplicate / Delete / Export** — clone an artifact, remove it, or export as `.html`, ZIP, or JSON.
+
+Key routes: `/edit/:id`, `/versions/:id`, `/api/export/:id`

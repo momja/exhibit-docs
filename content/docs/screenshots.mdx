@@ -1,0 +1,45 @@
+---
+title: Screenshots
+description: "How docs images are captured, named, and embedded."
+---
+
+Screenshots live in `public/screenshots/` and are referenced root-absolute
+from MDX:
+
+```mdx
+![Gallery home](/screenshots/gallery-home.png)
+```
+
+Placeholders (like `/screenshots/gallery-empty.svg`) ship so pages render
+before real captures exist. Replace them with curated captures — never commit
+throwaway review images.
+
+## Capture framework
+
+`scripts/screenshots/` is the whole pipeline:
+
+- `screenshots.config.json` — routes to capture (Exhibit + docs), viewport,
+  output dir.
+- `capture.mjs` — Playwright Chromium script. Reads the config, visits each
+  route, writes PNGs to `public/screenshots/`.
+- `README.md` — full runbook (in that folder).
+
+```bash
+# one-time
+npm i -D playwright
+npx playwright install chromium
+
+# run both servers first:
+#   Exhibit: ./bin/server   (in momja/Exhibit, :8080)
+#   Docs:    npm run dev    (here, :3000)
+
+EXHIBIT_URL=http://localhost:8080 DOCS_URL=http://localhost:3000 npm run screenshots
+```
+
+## Conventions
+
+- Kebab-case names: `gallery-home.png`, `new-artifact.png`.
+- Keep each image under ~500KB; prefer PNG for UI.
+- Only list curated shots in the config — the script captures exactly those.
+- After capturing, reference the PNG from the relevant MDX page and delete or
+  keep the SVG placeholder only if the page needs a fallback.

@@ -1,13 +1,34 @@
 ---
-title: Hello World
-description: Your first document
+title: Exhibit Docs
+description: "How Exhibit works — gallery, artifacts, widgets, and sharing."
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+Welcome to the Exhibit docs. Exhibit is a self-hostable personal gallery for
+single-file HTML+JS micro-tools ("artifacts"). Each tool runs in a sandboxed
+iframe on an isolated origin, with `localStorage` synced through the server so
+simple tools share one data state across all your devices.
 
-## What is Next?
+## Start here
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+  <Card title="What is Exhibit?" href="/docs/what-is-exhibit" />
+  <Card title="Quickstart" href="/docs/quickstart" />
+  <Card title="How Exhibit works" href="/docs/how-it-works" />
+  <Card title="Using the gallery" href="/docs/using-the-gallery" />
 </Cards>
+
+## Screenshots
+
+Every page can embed images from `public/screenshots/`. To regenerate them,
+see [Screenshots](/docs/screenshots).
+
+![Gallery placeholder](/screenshots/gallery-empty.svg)
+
+> Screenshot framework is seeded — real captures replace the SVG placeholders
+> via `npm run screenshots`.
+
+## About these docs
+
+Small on purpose. They seed the core mental model (artifacts, gallery,
+widgets, state sync, sharing) and link back to the source of truth in
+[`momja/Exhibit`](https://github.com/momja/Exhibit) (`README.md`, `docs/`).
