@@ -1,36 +1,26 @@
 ---
 title: What is Exhibit
-description: "Exhibit in one page: artifacts, gallery, widgets"
+description: "The basic ideas behind the app."
 ---
 
-Exhibit is a self-hostable personal gallery for single-file HTML+JS micro-tools, where each tool runs in a sandboxed iframe and its `localStorage` syncs through the server so state follows you across devices.
+Exhibit is a library for small interactive tools — calculators, trackers, planners, little helpers — that you open and use right in your browser.
 
-## Key concepts
+## The basic ideas
 
-- **Artifact** — a single self-contained HTML+JS micro-tool, built with the agent, pasted as markup, or saved from a snapshotted URL.
-- **Gallery** — the home surface (`/`) listing your artifacts as cards, with Starred, Search, Shared, and Activity views for organizing and rediscovering them.
-- **Exhibit tile** — one gallery card: the artifact's title, preview, tags, and actions (open, star, share, edit, version history).
-- **Widget** — an optional, read-only HTML preview of an artifact's saved state, rendered inside its gallery card. It reads the same keys the tool writes but cannot write back.
-- **Storage shim** — a small preamble injected before artifact scripts that captures `localStorage` writes and syncs them through the server, so reopening a card on another device restores it.
-- **Network allowlist / CSP** — each artifact declares the external domains it may call; anything unapproved stays blocked by a per-artifact Content Security Policy.
-- **Version history** — changes to artifact and widget source are snapshotted as versions, viewable and restorable from the `#versions-panel` section of `/artifacts/:id/edit`.
-- **Sharing links vs grants** — anonymous public links (`/s/:shareID`) let anyone with the URL view the owner's saved state with no write-through, while named grants share with specific signed-in users; either can be revoked so the URL stops resolving.
-- **Render surface** — the isolated origin and sandboxed iframe an artifact executes in, separate from the gallery app origin.
-- **Agent** — an optional Pi sidecar that can create and edit artifacts through the same HTTP API as the UI.
+You'll run into these everywhere in the app:
 
-## Tech stack
+- **Exhibits (your tools).** Each saved tool is one page you can open and use. Think of them like apps in your own little app store.
+- **The gallery (your library).** The home screen that lists all your tools as cards. This is where you start.
+- **Cards.** One card per tool. Each card shows a small live preview of the tool, its title, and a menu of things you can do with it.
+- **Widgets (the little preview on a card).** The small live preview at the top of a card. It shows you what's inside without opening the whole thing.
+- **Versions (history you can restore).** When a tool changes, Exhibit keeps the older copies. If something breaks or you preferred the old one, you can go back to it.
+- **Sharing (links vs named people).** You can share a tool two ways: with a link anyone can open, or with specific signed-in people. Either way, you can stop sharing whenever you like.
 
-- **Go 1.25** server with `html/template` server-rendered pages.
-- **SQLite + FTS5** for metadata and full-text search, migrated with `goose`.
-- **FS / S3 blobs** for artifact bodies and snapshots.
-- **Sandboxed iframe + per-artifact CSP** on an isolated render origin.
-- **htmx partials + Stimulus controllers + Phosphor icons** for gallery UI.
-- **Pi sidecar** for optional agent-driven authoring.
-
-## Next steps
+## What's next
 
 <Cards>
-  <Card title="Quickstart" href="/docs/quickstart" />
-  <Card title="How Exhibit works" href="/docs/how-it-works" />
-  <Card title="Using the gallery" href="/docs/using-the-gallery" />
+  <Card title="Take the tour" href="/docs/tour" />
+  <Card title="Add a tool" href="/docs/add" />
 </Cards>
+
+{/* Verified against: galleryspaces.tmpl, gallerygrid.tmpl, detail.tmpl, partials.tmpl */}

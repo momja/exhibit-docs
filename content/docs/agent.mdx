@@ -1,0 +1,84 @@
+---
+title: Ask the agent
+description: "Build and edit with chat."
+---
+
+{/*Sources checked: internal/api/templates/new.tmpl (Build with agent brief:
+What should it do?, Start building), internal/api/templates/agent.tmpl
+(Chat/Preview tabs, History, composer, Preview pane, agentResume card),
+agentquestions.tmpl (option buttons, Something else, Your answer…, Done,
+Skip, Try again), internal/api/appheader.go (agentHeader: Agent, Back),
+web/gallery/agent.js (previewArtifactId, openHistory/closeHistory, showPane,
+View updated preview nudge, resume/rollback), web/gallery/agent-questions.js.
+No API paths, hosting, or config below — chat wording only. */}
+
+The agent builds and changes tools for you through chat. You describe what you want; it writes the page and shows it to you.
+
+## Two ways to start
+
+**From the New page** (for something that does not exist yet):
+
+1. Go to the New page and pick the **Build with agent** route (already selected).
+2. Give it a **Title** if you like, then answer **What should it do?** — what belongs on screen and what it should remember between visits.
+3. Choose **Start building**. The agent page opens and your answers become its first message.
+
+**From an existing tool** (to change one):
+
+1. Open the artifact and choose **More actions**, then **Edit with agent**.
+2. The agent page opens already working on that exhibit — it reads the tool before changing anything.
+
+The agent page header reads **Agent** with a **Back** link; when the agent needs your own key, an **API key** button appears beside it.
+
+## Picking which exhibit it works on
+
+The agent always works on one exhibit at a time:
+
+- Arriving from **Start building** or **Edit with agent**, it is already set — the chat and preview belong to that exhibit.
+- The **Preview** pane names the exhibit in its bar. **View artifact** opens the finished tool; **Open** (or **Preview only** for connected tools) opens it in a new tab.
+- While it works, everything it does lands on that exhibit — check the preview title before sending a message that says "it".
+
+## What it can do for you
+
+Ask in plain words. It can:
+
+1. Create a new tool from your description.
+2. Change or fix a tool you already have.
+3. Draft or update the tool's card widget.
+4. Read a tool's source and explain what it does.
+
+Type into the **Describe what you want to build or change…** box and send with the paper-plane button (Enter sends; Shift+Enter starts a new line). While it works, the button becomes **Stop agent** — choose it to interrupt.
+
+## Following its progress
+
+Watch two places at once:
+
+1. **Chat** (left) — the agent narrates as it goes, with small chips naming each step (**Creating**, **Writing**, **Editing**, **Reading**) that turn into a check when done.
+2. **Preview** (right) — the live tool. Switch with the **Chat** and **Preview** tabs on narrow screens; a **View updated preview** nudge appears over the chat when the preview changes while you read.
+
+You can also choose **Select an element** above the preview, then click part of the tool, to point the agent at exactly that piece.
+
+## Looking back at past conversations
+
+1. Choose **History** above the chat. The chat gives way to **Previous conversations**, newest first, each saying which version it last worked against and when.
+2. Pick one to read it. The full conversation appears read-only.
+3. To pick it back up, choose **Continue this conversation**.
+
+If the tool has moved on since that conversation, you get a choice: **Restore vN and continue** puts the tool's code and saved data back as that version left them (recorded as a new version, so nothing is lost — preview it first with **Preview vN**), while **Continue with current version** leaves the tool alone and lets the agent re-read it. Some very old conversations can be read but not continued, and the card says so.
+
+## When it asks you a question
+
+Sometimes the agent needs a decision before continuing. It shows one or more questions inline, each with:
+
+1. Option buttons — pick the one you want (some questions allow several).
+2. **Something else** — opens a **Your answer…** box for answering in your own words.
+3. **Done** — confirms a question that takes several answers.
+4. **Skip** — moves on without answering.
+
+If the questions fail to load, a **Try again** button appears — choose it to reload them.
+
+## Next steps
+
+<Cards>
+  <Card title="Add tools" href="/docs/add" />
+  <Card title="Edit and versions" href="/docs/edit" />
+</Cards>

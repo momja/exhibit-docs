@@ -1,11 +1,15 @@
 {
-  "title": "Exhibit Docs",
+  "title": "Exhibit user guide",
   "pages": [
     "index",
     "what-is-exhibit",
-    "quickstart",
-    "how-it-works",
-    "using-the-gallery",
+    "tour",
+    "add",
+    "find",
+    "use",
+    "share",
+    "edit",
+    "agent",
     "screenshots"
   ]
 }

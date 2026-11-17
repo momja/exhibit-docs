@@ -12,14 +12,18 @@ npm run dev
 # open http://localhost:3000/docs
 ```
 
-## Content
+## Content (end-user guides — how to USE Exhibit, not host it)
 
-- `content/docs/index.mdx` — landing
-- `content/docs/what-is-exhibit.mdx` — concepts + stack
-- `content/docs/quickstart.mdx` — run it, save first tool
-- `content/docs/how-it-works.mdx` — two origins, one write path
-- `content/docs/using-the-gallery.mdx` — day-to-day workflows
-- `content/docs/screenshots.mdx` — image conventions + pipeline
+- `content/docs/index.mdx` — user guide landing
+- `content/docs/what-is-exhibit.mdx` — basic ideas in plain language
+- `content/docs/tour.mdx` — sign in, spaces, cards, search, mini-tour
+- `content/docs/add.mdx` — the New page: Build with agent / Paste HTML / From URL
+- `content/docs/find.mdx` — search, stars, tags, collections, Activity, Shared
+- `content/docs/use.mdx` — opening cards, permission prompts, sync expectations
+- `content/docs/share.mdx` — Share dialog: public link, people, data modes
+- `content/docs/edit.mdx` — edit page: source, widget, permissions, saved data, versions
+- `content/docs/agent.mdx` — agent chat UI: context, preview, history, questions
+- `content/docs/screenshots.mdx` — image conventions + capture pipeline
 - `content/docs/meta.json` — sidebar order
 
 Images live in `public/screenshots/` and are referenced root-absolute:

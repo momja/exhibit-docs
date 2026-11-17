@@ -1,0 +1,57 @@
+---
+title: Use your tools
+description: "Open cards and pick up anywhere."
+---
+
+## Opening a card
+
+Choose a card's title (or anywhere on its preview) to open the tool. The tool fills the page inside a preview frame, with a small floating control bar for the page around it:
+
+- The tool's title opens an info card about the exhibit.
+- The star button returns to **Starred**.
+- The pencil opens **Edit** (owners only).
+- **Share** opens sharing (owners only).
+- **More** holds extra actions, including opening outside the preview (see below).
+
+Cards for tools shared with you open the same way but without the owner's editing controls.
+
+## Using the tool normally
+
+Just use it: click, type, and change things as the tool invites you to. Anything the tool saves — your entries, settings, progress — is kept for you. If a tool misbehaves or looks stuck, reloading the page gives it a fresh start; anything you had not yet saved in the tool may be lost.
+
+Occasionally a banner appears over the tool:
+
+- If the preview cannot provide something the tool needs, a warning explains it and offers **Open in new tab**.
+- If something changed elsewhere while the page was open, a notice invites you to **Reload artifact** to use the latest saved data.
+
+## What follows you between devices
+
+Sign in with the same account on another device, open the same card, and your saved entries and settings are there — what you put into a tool travels with your account.
+
+One exception: things a tool keeps only for the current tab never leave that tab. Close the tab and they are gone on every device.
+
+## When a tool asks to connect or download
+
+The first time a tool wants something beyond showing itself, Exhibit asks you before allowing it. Each prompt names the tool and offers an allow and a block choice; allowing remembers your answer for that tool, and you can change it later under **Edit → Permissions**.
+
+- **Allow network access?** — the tool tried to contact a named site and was blocked. Choose **Allow site** to permit it from now on, **Block once** to refuse just this time, or **Always block site** to refuse it permanently.
+- **Allow downloads?** — the tool wants to save a named file to your device. Choose **Allow downloads** or **Block**.
+- **Allow clipboard access?** — the tool wants to use your clipboard. Choose **Allow clipboard** or **Block**.
+- **Allow opening links?** — you are opening a link to a named site. Choose **Allow links** or **Block**.
+- **Allow device access?** — the tool wants your camera or microphone. Choosing **Allow and open** opens the tool in a new tab to use the device; your browser will also ask for permission.
+- **Allow location access?** — the tool wants your location. Choosing **Allow and open** opens the tool in a new tab, where your browser will also ask.
+
+If you are viewing a tool someone shared with you, only its owner can allow new sites — you will see an explanation naming the blocked site instead of a prompt.
+
+## Full view
+
+Some tools work better outside the preview frame — for downloads, outside links, or device features. Choose **Open in new tab** (from the More menu, or from a banner when one is offered).
+
+The first time, a confirmation titled **Open in a new tab?** explains that the tool will run as a regular web page under your browser's normal controls. Tick **Do not ask again for this artifact** to skip this confirmation next time, then choose **Open in new tab** — or **Cancel** to stay in the preview.
+
+<Cards>
+  <Card title="Share" href="/docs/share" />
+  <Card title="Edit" href="/docs/edit" />
+</Cards>
+
+{/*Verified against: detail.tmpl, direct_open.tmpl, partials.tmpl (networkPrompt), components.tmpl (viewer controls), direct-open.js */}

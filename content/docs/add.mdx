@@ -1,0 +1,64 @@
+---
+title: Add an exhibit
+description: "Create tools from the New page."
+---
+
+The New page is where exhibits come from. Open it, pick one of three starting points, and follow the steps.
+
+## Pick a starting point
+
+The New page offers three options:
+
+1. **Build with agent** — describe what you want to build. The page opens on this option.
+2. **Paste HTML** — save HTML you already have.
+3. **From URL** — save a copy of a web page.
+
+On narrow screens the buttons shorten to **Agent**, **Paste**, and **URL**, with the selected option's description shown underneath.
+
+## Build with agent
+
+1. Optionally give your tool a **Title**.
+2. In **What should it do?**, describe what you want on screen and what it should remember between visits.
+3. Choose **Start building**.
+
+The agent takes your description as its starting brief and drafts the tool with you. **Cancel** returns to the gallery without creating anything.
+
+## Paste HTML
+
+1. Choose **Paste HTML**.
+2. Optionally give it a **Title** (blank titles become "Untitled").
+3. Paste your markup into **HTML source**.
+4. Choose **Add to Gallery**.
+
+If the field is empty, the page tells you to paste HTML first.
+
+## From URL
+
+1. Choose **From URL**.
+2. Optionally give it a **Title**.
+3. Enter the full page address in **Page URL** (starting with `http://` or `https://`).
+4. Leave the snapshot option on unless you have a reason not to (see below).
+5. Choose **Add to Gallery**.
+
+### The snapshot option
+
+From URL shows a checkbox labeled **Save images, styles, and scripts with the page (recommended)**, with the note "Some files may still require network access."
+
+In plain words: with the box checked, Exhibit saves a copy of the page's images, styles, and scripts alongside it, so the tool keeps working even if those files move or vanish. Anything that could not be saved stays as a live reference and may still need a connection to the original site.
+
+## What happens right after you save
+
+1. Your exhibit is saved as a new card in the gallery.
+2. If the tool needs to reach outside sites, a prompt appears listing those sites, asking you to allow them. Nothing is allowed until you approve it — unapproved things stay blocked, and you can change your choices later.
+3. Once saving finishes, the new tool opens so you can try it.
+
+If something could not be saved cleanly, the page says so and offers a link to view what was saved instead of moving on silently.
+
+Find your new card any time in the gallery — it shows the title you gave it, or "Untitled".
+
+<Cards>
+  <Card title="Use your tools" href="/docs/use" />
+  <Card title="Edit" href="/docs/edit" />
+</Cards>
+
+{/*Verified against: new.tmpl, new.js */}
